@@ -2,6 +2,10 @@
 <% @list.bookmarks.each do |bookmark| %>
   <div><%= bookmark.movie.title %>  <span><%= link_to "delete", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure you want to remove the movie" } %></span></div>
   <div><%= bookmark.comment %> </div>
+  <% if bookmark.photo.attached? %>
+ <%= cl_image_tag(bookmark.photo.key,
+      width: 400, height: 300, crop: :fill) %>
+  <% end %>
 <% end %>
 <%= link_to "Add a movie to the list", new_list_bookmark_path(@list) %>
 <%= link_to "back", lists_path  %>
