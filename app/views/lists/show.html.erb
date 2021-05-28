@@ -1,0 +1,7 @@
+<h1>This is the show page for: <%= @list.name %></h1>
+<% @list.bookmarks.each do |bookmark| %>
+  <div><%= bookmark.movie.title %>  <span><%= link_to "delete", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure you want to remove the movie" } %></span></div>
+  <div><%= bookmark.comment %> </div>
+<% end %>
+<%= link_to "Add a movie to the list", new_list_bookmark_path(@list) %>
+<%= link_to "back", lists_path  %>
